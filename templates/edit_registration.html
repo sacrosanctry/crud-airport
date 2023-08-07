@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+  
+{% block title %}Edit Registration Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/update_registration/{{registration.id}}">
+    {% csrf_token %}  
+    <div class="container">   
+        <div class="col-12">  
+            <h3>Update Details</h3>  
+        </div> 
+        <div class="mb-3"> 
+            <label>Registration ID:</label>
+            <input type="number" class="form-control" name="id" id="id_id" required max="10" value="{{ registration.id }}"/>
+        </div> 
+        <div class="mb-3"> 
+            <label>Passenger ID:</label>
+            <td>{{ registration.passenger_id }}</td>
+            <input type="number" class="form-control" name="passenger_id" id="id_passenger_id" required max="10" value="{{ registration.passenger_id }}" />
+        </div> 
+        <div class="mb-3">
+            <label>Flight ID:</label>
+            <input type="number" class="form-control" name="flight_id" id="id_flight_id" required maxlength="10" value="{{ registration.flight_id }}" />
+        </div> 
+        <div class="mb-3"> 
+            <label>Visa:</label>
+            <input type="number" class="form-control" name="visa" id="id_visa" required max="9" value="{{ registration.visa }}" />
+        </div>
+        <div class="mb-3">
+            <label>Price:</label>
+            <input type="number" class="form-control" name="price" id="id_price" required max="5" value="{{ registration.price }}" />
+        </div>
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-success btn-lg">Update</button>  
+        </div> 
+    </div>  
+    </form>
+</div>
+{% endblock content %}

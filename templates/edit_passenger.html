@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+  
+{% block title %}Edit Passenger Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/update_passenger/{{passenger.id}}">
+    {% csrf_token %}  
+    <div class="container">   
+        <div class="col-12">  
+            <h3>Update Details</h3>  
+        </div> 
+        <div class="mb-3"> 
+            <label>Passenger ID:</label>
+            <input type="number" class="form-control" name="id" id="id_id" required max="10" value="{{ passenger.id }}"/>
+        </div> 
+        <div class="mb-3"> 
+            <label>Name:</label>  
+            <input type="text" class="form-control" name="name" id="id_name" required maxlength="100" value="{{ passenger.name }}" />
+        </div> 
+        <div class="mb-3"> 
+            <label>Passport:</label>
+            <input type="number" class="form-control" name="passport" id="id_passport" required max="9" value="{{ passenger.passport }}" />
+        </div> 
+        <div class="mb-3"> 
+            <label>Ticket:</label>
+            <input type="number" class="form-control" name="ticket" id="id_ticket" required max="9" value="{{ passenger.ticket }}" />
+        </div>
+        <div class="mb-3">
+            <label>Demographic register:</label>
+            <input type="number" class="form-control" name="dem_register" id="id_dem_register" required max="12" value="{{ passenger.dem_register }}" />
+        </div>
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-success btn-lg">Update</button>  
+        </div> 
+    </div>  
+    </form>
+</div>
+{% endblock content %}

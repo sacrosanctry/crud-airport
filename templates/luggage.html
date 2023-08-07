@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+  
+{% block title %}Luggage Records{% endblock title %}
+  
+{% block content %}
+ <div class="col-md-12">
+        <h4>Luggage Records (Багаж):</h4>
+        <span><a href="/add_luggage" class="btn btn-primary">Add New Record</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Registration ID</th>
+            <th>Weight</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for luggage in luggages %}
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ luggage.id }}</td>
+            <td>{{ luggage.registration_id }}</td>
+            <td>{{ luggage.weight }}</td>
+            <!-- !!!!!!!!!!!!!!!!!!! here is update, not edit (as in registration and interpol)!!!!!! -->
+            <td><a href="/update_luggage/{{ luggage.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/delete_luggage/{{ luggage.id }}" class="btn btn-danger">Delete</a></td>
+            </tr>  
+        {% endfor %} 
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

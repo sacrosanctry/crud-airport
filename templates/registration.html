@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+  
+{% block title %}Registration Records{% endblock title %}
+
+{% block content %}
+ <div class="col-md-12">
+        <h4>Registration Records (Реєстрація):</h4>
+        <span><a href="/add_registration" class="btn btn-primary">Add New Record</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Passenger ID</th>
+            <th>Flight ID</th>
+            <th>Visa</th>
+            <th>Luggage price</th>
+            <th>Price</th>
+            <th>Wanted</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for registration in registrations %}
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ registration.id }}</td>
+            <td>{{ registration.passenger_id }}</td>
+            <td>{{ registration.flight_id }}</td>
+            <td>{{ registration.visa }}</td>
+            <td>{{ registration.luggage_price }}</td>
+            <td>{{ registration.price }}</td>
+            <td>{{ registration.wanted }}</td>
+            <!-- !!!!!!!!!!!!!!!!!!! here is update, not edit (as in luggage and interpol)!!!!!! -->
+            <td><a href="/update_registration/{{ registration.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/delete_registration/{{ registration.id }}" class="btn btn-danger">Delete</a></td>
+            </tr>  
+        {% endfor %} 
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

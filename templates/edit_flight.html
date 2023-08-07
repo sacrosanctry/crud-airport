@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+  
+{% block title %}Edit Flight Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/update_flight/{{flight.id}}">
+    {% csrf_token %}  
+    <div class="container">   
+        <div class="col-12">  
+            <h3>Update Details</h3>  
+        </div> 
+        <div class="mb-3"> 
+            <label>Flight ID:</label>
+            <input type="number" class="form-control" name="id" id="id_id" required max="10" value="{{ flight.id }}"/>
+        </div> 
+        <div class="mb-3"> 
+            <label>Destination:</label>
+            <input type="text" class="form-control" name="destination" id="id_destination" required maxlength="100" value="{{ flight.destination }}" />
+        </div> 
+        <div class="mb-3">
+            <label>Departure time:</label>
+            <input type="datetime-local" class="form-control" name="departure_time" id="id_departure_time" required maxlength="254" value="{{ flight.departure_time }}" />
+        </div> 
+        <div class="mb-3"> 
+            <label>Terminal:</label>
+            <input type="text" class="form-control" name="terminal" id="id_terminal" required maxlength="1" value="{{ flight.terminal }}" />
+        </div>
+        <div class="mb-3">
+            <label>Max capacity:</label>
+            <input type="number" class="form-control" name="max_capacity" id="id_max_capacity" required max="3" value="{{ flight.max_capacity }}" />
+        </div>
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-success btn-lg">Update</button>  
+        </div> 
+    </div>  
+    </form>
+</div>
+{% endblock content %}

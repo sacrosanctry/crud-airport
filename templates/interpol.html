@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+  
+{% block title %}Interpol Records{% endblock title %}
+  
+{% block content %}
+ <div class="col-md-12">
+        <h4>Interpol Records (Інтерпол):</h4>
+        <span><a href="/add_interpol" class="btn btn-primary">Add New Record</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Demographic register</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for interpol in interpols %}
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ interpol.id }}</td>
+            <td>{{ interpol.name }}</td>
+            <td>{{ interpol.dem_register }}</td>
+            <!-- !!!!!!!!!!!!!!!!!!! here is update, not edit (as in registration and luggage)!!!!!! -->
+            <td><a href="/update_interpol/{{ interpol.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/delete_interpol/{{ interpol.id }}" class="btn btn-danger">Delete</a></td>
+            </tr>  
+        {% endfor %} 
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

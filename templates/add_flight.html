@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+  
+{% block title %}Add New Flight Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">    
+    <form method="POST" class="post-form" action="/add_flight">
+    {% csrf_token %}  
+    <div class="container">  
+        <div class="col-12">  
+        <h3>Enter Details</h3>  
+        </div>    
+     
+        <div class="mb-3"> 
+            <label>Destination:</label>
+            {{ form.destination }}
+            {% for error in form.destination.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div> 
+        <div class="mb-3"> 
+            <label>Departure time:</label>
+            {{ form.departure_time }}
+            {% for error in form.departure_time.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>  
+        <div class="mb-3"> 
+            <label>Terminal:</label>
+            {{ form.terminal }}
+            {% for error in form.terminal.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label>Max capacity:</label>
+            {{ form.max_capacity }}
+            {% for error in form.max_capacity.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-primary">Submit</button>    
+        </div> 
+    </div>  
+    </form>  
+</div> 
+{% endblock content %}
+

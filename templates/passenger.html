@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+  
+{% block title %}Passenger Records{% endblock title %}
+  
+{% block content %}
+ <div class="col-md-12">
+        <h4>Passenger Records (Пасажир):</h4>
+        <span><a href="/add_passenger" class="btn btn-primary">Add New Record</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Passenger name</th>
+            <th>Passport</th>
+            <th>Ticket</th>
+            <th>Demographic register</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for passenger in passengers %}
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ passenger.id }}</td>
+            <td>{{ passenger.name }}</td>
+            <td>{{ passenger.passport }}</td>
+            <td>{{ passenger.ticket }}</td>
+            <td>{{ passenger.dem_register }}</td>
+            <td><a href="/edit_passenger/{{ passenger.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/delete_passenger/{{ passenger.id }}" class="btn btn-danger">Delete</a></td>
+            </tr>  
+        {% endfor %} 
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+  
+{% block title %}Add New Passenger Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">    
+    <form method="POST" class="post-form" action="/add_passenger">
+    {% csrf_token %}  
+    <div class="container">  
+        <div class="col-12">  
+        <h3>Enter Details</h3>  
+        </div>    
+     
+        <div class="mb-3"> 
+            <label>Name:</label>  
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div> 
+        <div class="mb-3"> 
+            <label>Passport:</label>
+            {{ form.passport }}
+            {% for error in form.passport.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>  
+        <div class="mb-3"> 
+            <label>Ticket:</label>
+            {{ form.ticket }}
+            {% for error in form.ticket.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label>Demographic register:</label>
+            {{ form.dem_register }}
+            {% for error in form.dem_register.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-primary">Submit</button>    
+        </div> 
+    </div>  
+    </form>  
+</div> 
+{% endblock content %}

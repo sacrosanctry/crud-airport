@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+  
+{% block title %}Edit Interpol Records{% endblock title %}
+  
+{% block content %}
+<form action="" method="POST">
+
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+            <h3>Update Details</h3>
+        </div>
+        <div class="mb-3">
+            <label>Interpol ID:</label>
+            {{ form.id }}
+            {% for error in form.id.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label>Name:</label>
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label>Demographic register:</label>
+            {{ form.dem_register }}
+            {% for error in form.dem_register.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success btn-lg">Update</button>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
